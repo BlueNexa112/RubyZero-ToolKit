@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#05070f">
+  <meta name="mobile-web-app-capable" content="yes">
+  <title>ToolKit — Daftar APK</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ================= TOP BAR ================= -->
+  <header class="topbar">
+    <a class="icon-btn back" href="index.html" aria-label="Kembali">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m15 18-6-6 6-6"/>
+      </svg>
+    </a>
+    <div class="brand brand-center">
+      <div class="brand-text">
+        <h1>Daftar APK</h1>
+        <span>10 aplikasi ringan</span>
+      </div>
+    </div>
+    <span class="icon-btn ghost" aria-hidden="true"></span>
+  </header>
+
+  <main class="page">
+
+    <!-- ================= SEARCH + FILTER ================= -->
+    <section class="toolbar">
+      <div class="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>
+        </svg>
+        <input id="searchApk" type="search" placeholder="Cari aplikasi..." autocomplete="off" inputmode="search">
+      </div>
+      <div class="chips" id="filterApk">
+        <button class="chip active" data-cat="all">Semua</button>
+        <button class="chip" data-cat="Alat">Alat</button>
+        <button class="chip" data-cat="Produktivitas">Produktivitas</button>
+        <button class="chip" data-cat="Sosial">Sosial</button>
+      </div>
+    </section>
+
+    <!-- ================= LIST APK ================= -->
+    <section class="section">
+      <div class="section-head">
+        <h3 class="section-title">Aplikasi</h3>
+        <span class="count-pill" id="countApk">0 item</span>
+      </div>
+      <div class="list" id="apkList"></div>
+      <div class="empty" id="emptyApk" hidden>
+        <span>🔎</span>
+        <p>Tidak ada aplikasi yang cocok.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= BOTTOM NAV ================= -->
+  <nav class="bottom-nav">
+    <a class="nav-item" href="index.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3.5 10.5 12 3.5l8.5 7"/>
+        <path d="M5.5 9.5V20a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1V9.5"/>
+        <path d="M9.5 21v-6h5v6"/>
+      </svg>
+      <span>Home</span>
+    </a>
+    <a class="nav-item active" href="apk.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 3v11"/><path d="m7.5 9.5 4.5 4.5 4.5-4.5"/>
+        <path d="M4 17v2.5A1.5 1.5 0 0 0 5.5 21h13a1.5 1.5 0 0 0 1.5-1.5V17"/>
+      </svg>
+      <span>APK</span>
+    </a>
+    <a class="nav-item" href="game.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="7" width="20" height="11" rx="5.5"/>
+        <path d="M7 10.5v3M5.5 12h3"/>
+        <circle cx="16" cy="11" r="1.1"/>
+        <circle cx="18.2" cy="13.4" r="1.1"/>
+      </svg>
+      <span>Game</span>
+    </a>
+  </nav>
+
+</div>
+
+<script src="js/script.js"></script>
+<script>
+  /* ============================================================
+     DATA APLIKASI — 10 item, URUT sesuai file:
+       1 → apk1.html  (Kalkulator)
+       2 → apk2.html  (Kalkulator USD)
+       3 → apk3.html  (Kalkulator Diskon)
+       4 → apk4.html  (Nickname Store)
+       5 → apk5.html  (Nama Produk)
+       6 → apk6.html  (Password Generator)
+       7 → apk7.html  (Deskripsi Produk)
+       8 → apk8.html  (Asisten AI)
+       9 → apk9.html  (Timer)
+      10 → apk10.html (Kalkulator BBM)
+     ============================================================ */
+  var APPS = [
+    { id: 1,  name: 'Kalkulator',
+      desc: 'Kalkulator dasar dengan operasi +, −, ×, ÷, %, dan desimal.',
+      icon: '🧮', cat: 'Alat',           tone: 'cyan'   },
+
+    { id: 2,  name: 'Kalkulator USD',
+      desc: 'Konversi IDR ⇄ USD dengan kurs manual yang bisa diubah.',
+      icon: '💵', cat: 'Alat',           tone: 'green'  },
+
+    { id: 3,  name: 'Kalkulator Diskon',
+      desc: 'Hitung harga akhir dan total penghematan dari diskon.',
+      icon: '🏷️', cat: 'Alat',           tone: 'blue'   },
+
+    { id: 4,  name: 'Nickname Store',
+      desc: 'Generator nama toko & nickname dari kata dasar pilihanmu.',
+      icon: '🏪', cat: 'Produktivitas', tone: 'purple' },
+
+    { id: 5,  name: 'Nama Produk',
+      desc: 'Buat 8 variasi nama produk dari kategori atau kata kunci.',
+      icon: '📦', cat: 'Produktivitas', tone: 'pink'   },
+
+    { id: 6,  name: 'Password Generator',
+      desc: 'Kata sandi kuat dengan opsi panjang, huruf, angka, simbol.',
+      icon: '🔐', cat: 'Alat',           tone: 'cyan'   },
+
+    { id: 7,  name: 'Deskripsi Produk',
+      desc: 'Generate deskripsi produk otomatis siap copy-paste.',
+      icon: '📝', cat: 'Produktivitas', tone: 'blue'   },
+
+    { id: 8,  name: 'Asisten AI',
+      desc: 'Chatbot offline untuk tanya jawab ringan tanpa API.',
+      icon: '🤖', cat: 'Sosial',         tone: 'purple' },
+
+    { id: 9,  name: 'Timer',
+      desc: 'Timer hitung mundur dengan preset dan notifikasi getar.',
+      icon: '⏱️', cat: 'Alat',           tone: 'green'  },
+
+    { id: 10, name: 'Kalkulator BBM',
+      desc: 'Estimasi liter dan biaya bahan bakar untuk perjalananmu.',
+      icon: '⛽', cat: 'Alat',           tone: 'cyan'   }
+  ];
+
+  ToolKit.render('#apkList', APPS, 'apk');
+  ToolKit.bindSearch('#searchApk', '#filterApk', '#apkList', '#countApk', '#emptyApk', APPS);
+</script>
+
+</body>
+</html>

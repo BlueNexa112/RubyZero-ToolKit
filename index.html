@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#05070f">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="description" content="ToolKit — kumpulan aplikasi ringan dan game kasual untuk Android.">
+  <title>ToolKit — Home</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ================= TOP BAR ================= -->
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-logo">TK</div>
+      <div class="brand-text">
+        <h1>ToolKit</h1>
+        <span>Android Utility Hub</span>
+      </div>
+    </div>
+    <a class="icon-btn" href="apk.html" aria-label="Cari aplikasi">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>
+      </svg>
+    </a>
+  </header>
+
+  <main class="page">
+
+    <!-- ================= HERO ================= -->
+    <section class="hero">
+      <span class="hero-badge">● Versi 1.0 — Tahap Awal</span>
+      <h2 class="hero-title">
+        Semua alat &amp; game<br>
+        <span class="grad-text">dalam satu genggaman</span>
+      </h2>
+      <p class="hero-desc">
+        ToolKit mengumpulkan 10 aplikasi ringan dan 10 game kasual
+        yang dirancang khusus untuk smartphone Android. Cepat dibuka,
+        hemat penyimpanan, tanpa ribet.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="apk.html">Jelajahi APK</a>
+        <a class="btn btn-ghost" href="game.html">Main Game</a>
+      </div>
+    </section>
+
+    <!-- ================= STATS ================= -->
+    <section class="stats">
+      <div class="stat-card">
+        <span class="stat-value">10</span>
+        <span class="stat-label">Aplikasi</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value">10</span>
+        <span class="stat-label">Game</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value">100%</span>
+        <span class="stat-label">Gratis</span>
+      </div>
+    </section>
+
+    <!-- ================= QUICK NAV ================= -->
+    <section class="section">
+      <div class="section-head">
+        <h3 class="section-title">Kategori</h3>
+      </div>
+      <div class="nav-cards">
+        <a class="nav-card tone-cyan" href="apk.html">
+          <span class="nav-card-icon">📦</span>
+          <span class="nav-card-title">APK</span>
+          <span class="nav-card-desc">10 aplikasi ringan siap pakai</span>
+          <span class="nav-card-go">Buka →</span>
+        </a>
+        <a class="nav-card tone-purple" href="game.html">
+          <span class="nav-card-icon">🎮</span>
+          <span class="nav-card-title">Game</span>
+          <span class="nav-card-desc">10 game kasual tanpa install</span>
+          <span class="nav-card-go">Main →</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ================= FEATURED ================= -->
+    <section class="section">
+      <div class="section-head">
+        <h3 class="section-title">Pilihan Untukmu</h3>
+        <a class="link-more" href="apk.html">Lihat semua</a>
+      </div>
+      <div class="list" id="featuredList"></div>
+    </section>
+
+  </main>
+
+  <!-- ================= BOTTOM NAV ================= -->
+  <nav class="bottom-nav">
+    <a class="nav-item active" href="index.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3.5 10.5 12 3.5l8.5 7"/>
+        <path d="M5.5 9.5V20a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1V9.5"/>
+        <path d="M9.5 21v-6h5v6"/>
+      </svg>
+      <span>Home</span>
+    </a>
+    <a class="nav-item" href="apk.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 3v11"/><path d="m7.5 9.5 4.5 4.5 4.5-4.5"/>
+        <path d="M4 17v2.5A1.5 1.5 0 0 0 5.5 21h13a1.5 1.5 0 0 0 1.5-1.5V17"/>
+      </svg>
+      <span>APK</span>
+    </a>
+    <a class="nav-item" href="game.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="7" width="20" height="11" rx="5.5"/>
+        <path d="M7 10.5v3M5.5 12h3"/>
+        <circle cx="16" cy="11" r="1.1"/>
+        <circle cx="18.2" cy="13.4" r="1.1"/>
+      </svg>
+      <span>Game</span>
+    </a>
+  </nav>
+
+</div>
+
+<script src="js/script.js"></script>
+<script>
+  /* ============================================================
+     FEATURED — Pilihan untukmu di halaman Home.
+     Setiap item WAJIB punya:
+       - id    : nomor file (1..10)
+       - kind  : 'apk' | 'game'  → menentukan folder tujuan
+       - name  : judul card
+       - desc  : deskripsi singkat
+       - icon  : emoji
+       - tag   : label kategori (boleh sama dengan 'cat')
+       - tone  : cyan | purple | blue | pink | green
+     Semua id di bawah sudah COCOK dengan file aslinya.
+     ============================================================ */
+  var FEATURED = [
+    {
+      id: 6, kind: 'apk',
+      name: 'Password Generator',
+      desc: 'Buat kata sandi kuat dengan opsi huruf, angka, dan simbol.',
+      icon: '🔐', tag: 'Alat', tone: 'cyan'
+    },
+    {
+      id: 1, kind: 'game',
+      name: 'Snake',
+      desc: 'Makan buah, tumbuh panjang, jangan tabrak dinding.',
+      icon: '🐍', tag: 'Arcade', tone: 'green'
+    },
+    {
+      id: 9, kind: 'apk',
+      name: 'Timer',
+      desc: 'Timer hitung mundur dengan preset dan notifikasi getar.',
+      icon: '⏱️', tag: 'Alat', tone: 'blue'
+    },
+    {
+      id: 5, kind: 'game',
+      name: 'Flappy Bird',
+      desc: 'Tap untuk terbang melewati celah pipa neon.',
+      icon: '🐤', tag: 'Arcade', tone: 'pink'
+    },
+    {
+      id: 8, kind: 'apk',
+      name: 'Asisten AI',
+      desc: 'Chatbot offline untuk tanya jawab ringan sehari-hari.',
+      icon: '🤖', tag: 'Sosial', tone: 'purple'
+    },
+    {
+      id: 10, kind: 'game',
+      name: 'Coin Clicker',
+      desc: 'Tap koin, kumpulkan, upgrade mesin koin otomatis.',
+      icon: '🪙', tag: 'Santai', tone: 'cyan'
+    }
+  ];
+
+  // 'apk' hanya sebagai default — setiap item pakai kind-nya sendiri
+  ToolKit.render('#featuredList', FEATURED, 'apk');
+</script>
+
+</body>
+</html>

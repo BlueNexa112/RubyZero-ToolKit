@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#05070f">
+  <meta name="mobile-web-app-capable" content="yes">
+  <title>ToolKit — Daftar Game</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ================= TOP BAR ================= -->
+  <header class="topbar">
+    <a class="icon-btn back" href="index.html" aria-label="Kembali">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m15 18-6-6 6-6"/>
+      </svg>
+    </a>
+    <div class="brand brand-center">
+      <div class="brand-text">
+        <h1>Daftar Game</h1>
+        <span>10 game kasual</span>
+      </div>
+    </div>
+    <span class="icon-btn ghost" aria-hidden="true"></span>
+  </header>
+
+  <main class="page">
+
+    <!-- ================= SEARCH + FILTER ================= -->
+    <section class="toolbar">
+      <div class="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>
+        </svg>
+        <input id="searchGame" type="search" placeholder="Cari game..." autocomplete="off" inputmode="search">
+      </div>
+      <div class="chips" id="filterGame">
+        <button class="chip active" data-cat="all">Semua</button>
+        <button class="chip" data-cat="Arcade">Arcade</button>
+        <button class="chip" data-cat="Aksi">Aksi</button>
+        <button class="chip" data-cat="Puzzle">Puzzle</button>
+        <button class="chip" data-cat="Santai">Santai</button>
+      </div>
+    </section>
+
+    <!-- ================= LIST GAME ================= -->
+    <section class="section">
+      <div class="section-head">
+        <h3 class="section-title">Game</h3>
+        <span class="count-pill" id="countGame">0 item</span>
+      </div>
+      <div class="list" id="gameList"></div>
+      <div class="empty" id="emptyGame" hidden>
+        <span>🕹️</span>
+        <p>Tidak ada game yang cocok.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= BOTTOM NAV ================= -->
+  <nav class="bottom-nav">
+    <a class="nav-item" href="index.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3.5 10.5 12 3.5l8.5 7"/>
+        <path d="M5.5 9.5V20a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1V9.5"/>
+        <path d="M9.5 21v-6h5v6"/>
+      </svg>
+      <span>Home</span>
+    </a>
+    <a class="nav-item" href="apk.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 3v11"/><path d="m7.5 9.5 4.5 4.5 4.5-4.5"/>
+        <path d="M4 17v2.5A1.5 1.5 0 0 0 5.5 21h13a1.5 1.5 0 0 0 1.5-1.5V17"/>
+      </svg>
+      <span>APK</span>
+    </a>
+    <a class="nav-item active" href="game.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="7" width="20" height="11" rx="5.5"/>
+        <path d="M7 10.5v3M5.5 12h3"/>
+        <circle cx="16" cy="11" r="1.1"/>
+        <circle cx="18.2" cy="13.4" r="1.1"/>
+      </svg>
+      <span>Game</span>
+    </a>
+  </nav>
+
+</div>
+
+<script src="js/script.js"></script>
+<script>
+  /* ============================================================
+     DATA GAME — 10 item, URUT sesuai file:
+       1 → game1.html  (Snake)
+       2 → game2.html  (Dino Run)
+       3 → game3.html  (Tebak Angka)
+       4 → game4.html  (Word Match)
+       5 → game5.html  (Flappy Bird)
+       6 → game6.html  (Tic Tac Toe)
+       7 → game7.html  (MTK Question)
+       8 → game8.html  (Space Shooter)
+       9 → game9.html  (Memory Card)
+      10 → game10.html (Coin Clicker)
+     ============================================================ */
+  var GAMES = [
+    { id: 1,  name: 'Snake',
+      desc: 'Makan buah, tumbuh panjang, jangan tabrak dinding.',
+      icon: '🐍', cat: 'Arcade', tone: 'green'  },
+
+    { id: 2,  name: 'Star Run',
+      desc: 'Tap untuk melompat, hindari rintangan ungu.',
+      icon: '⭐', cat: 'Aksi',   tone: 'cyan'   },
+
+    { id: 3,  name: 'Tebak Angka',
+      desc: 'Tebak angka 1–100 dengan petunjuk besar/kecil.',
+      icon: '🔢', cat: 'Puzzle', tone: 'purple' },
+
+    { id: 4,  name: 'Block Blast',
+      desc: 'memasang block dengan benar dan tepat.',
+      icon: '🧩', cat: 'Puzzle', tone: 'blue'   },
+
+    { id: 5,  name: 'Flappy Bird',
+      desc: 'Tap untuk terbang melewati celah pipa neon.',
+      icon: '🐤', cat: 'Arcade', tone: 'pink'   },
+
+    { id: 6,  name: 'Tic Tac Toe',
+      desc: 'Lawan AI dengan strategi blok dan sudut.',
+      icon: '❌', cat: 'Puzzle', tone: 'cyan'   },
+
+    { id: 7,  name: 'MTK Question',
+      desc: 'Soal matematika cepat dengan timer dan nyawa.',
+      icon: '➗', cat: 'Puzzle', tone: 'green'  },
+
+    { id: 8,  name: 'Space Shooter',
+      desc: 'Geser kapal, tembak musuh luar angkasa.',
+      icon: '🚀', cat: 'Aksi',   tone: 'purple' },
+
+    { id: 9,  name: 'Memory Card',
+      desc: 'Balik kartu dan cari pasangan yang sama.',
+      icon: '🧠', cat: 'Santai', tone: 'blue'   },
+
+    { id: 10, name: 'Coin Clicker',
+      desc: 'Tap koin, kumpulkan, upgrade mesin koin.',
+      icon: '🪙', cat: 'Santai', tone: 'pink'   }
+  ];
+
+  ToolKit.render('#gameList', GAMES, 'game');
+  ToolKit.bindSearch('#searchGame', '#filterGame', '#gameList', '#countGame', '#emptyGame', GAMES);
+</script>
+
+</body>
+</html>
